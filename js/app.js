@@ -15,8 +15,18 @@ let cantidadEncuestados = 0;  // Se utiliza para saber cuantos pokemons se inten
 // que muestre como imagen el "thumbnail" del nº de pokemon a adivinar
 // (utilice la variable "numero" para buscar el pokemon candidato en "pokemons")
 
-// function restart
 
+
+// function restart
+function restart (){
+    document.getElementById("resultText").textContent = "";
+    document.querySelector(".block").setAttribute("success", "");
+    numero = Math.floor(Math.random() * (pokemons.length));
+    const imagenRandom = pokemons[numero];
+    document.getElementById("imgpokemon").setAttribute("src", "imagenRandom.thumbnail");
+
+  
+}
 
 agregarEventos();
 restart();
