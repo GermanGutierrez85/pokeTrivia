@@ -31,5 +31,6 @@ send.onclick = () =>{
   console.log(cantidadEncuestados)
 }
 
-const nombrePokemon = pokemons[numero]
-console.log(nombrePokemon)
+/* const nombrePokemon = pokemons[numero]
+console.log(nombrePokemon) */
+console.log();

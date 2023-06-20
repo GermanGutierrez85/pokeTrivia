@@ -23,10 +23,8 @@ function restart (){
     document.querySelector(".block").setAttribute("success", "");
     numero = Math.floor(Math.random() * (pokemons.length));
     const imagenRandom = pokemons[numero];
-    document.getElementById("imgpokemon").setAttribute('src', "imagenRandom.thumbnail");
-
+    document.getElementById("imgpokemon").src = imagenRandom.thumbnail;
   
 }
-
 agregarEventos();
 restart();
