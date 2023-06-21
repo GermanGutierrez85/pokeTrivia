@@ -6,6 +6,14 @@ const reload = document.getElementById('reload');
 
 const input = document.querySelector('input');
 
+const resultText = document.getElementById('resultText');
+
+const image = document.getElementById('imgpokemon');
+
+const puntaje = document.getElementById('puntaje');
+
+
+
 
 function agregarEventos() {
   // evento de "click" sobre boton reload 
@@ -20,17 +28,31 @@ function agregarEventos() {
 send.onclick = () =>{
   input.onchange = () =>{
     return input.value
+    
   }
-  let respuesta = input.value
+  cantidadEncuestados++  
 
-  if(respuesta === "" || respuesta === respuesta.toUpperCase()){
-    alert('Debes ingresar una respuesta en minusculas')
-  }else{
-    cantidadEncuestados++
-  }
-  console.log(cantidadEncuestados)
+  const answer = input.value;
+  const inputAnswer = answer.toLowerCase();
+  const pokeName = pokemons[numero]["name"];
+  
+ if(answer === "" || answer === answer.toUpperCase()){
+  alert('Debes ingresar una respuesta en minusculas')
+ } 
+ 
+ if (inputAnswer === pokeName.toLowerCase()){
+  resultText.innerHTML = `Yes!, It's ${pokeName}`;
+  image.classList.add('success');
+  cantidadAcertados++
+ }else{
+  resultText.innerHTML = `No!, It's ${pokeName}`;
+ }
+
+ puntaje.innerHTML = `Puntaje ${cantidadAcertados} de ${cantidadEncuestados}`;
+
+ const score = ((cantidadAcertados / cantidadEncuestados) < 0.5 ? 
+                 puntaje.classList.add('puntajeBajo'): 
+                 puntaje.classList.remove('puntajeBajo'));
+
+  
 }
-
-/* const nombrePokemon = pokemons[numero]
-console.log(nombrePokemon) */
-console.log();
