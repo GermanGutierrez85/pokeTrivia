@@ -21,8 +21,8 @@ let cantidadEncuestados = 0;  // Se utiliza para saber cuantos pokemons se inten
 function restart (){
     document.getElementById("resultText").textContent = "";
     document.getElementById("imgpokemon").classList.remove("success");
-    numero = Math.floor(Math.random() * (pokemonsData.length));
-    let pokeImage= pokemonsData[numero]
+    numero = Math.floor(Math.random() * (pokemons.length));
+    let pokeImage= pokemons[numero]
     document.getElementById("imgpokemon").src = pokeImage.thumbnail;
     
 }

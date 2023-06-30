@@ -12,12 +12,11 @@ const image = document.getElementById('imgpokemon');
 
 const puntaje = document.getElementById('puntaje');
 
-const pokeJason = JSON.parse(jsonData);
-console.log(pokeJason)
+const poke = JSON.parse(jsonData);
 
-const pokemonsData = pokeJason.map( p => 
+const pokemons = poke.map( p => 
                      new Pokemon(p.id, p.name));
-console.log(pokemonsData)
+
 /* let pokemonsData = [];
 for(const pokeInfo of pokeJason){
     pokemonsData.push(new Pokemon(
@@ -48,7 +47,7 @@ send.onclick = () =>{
 
   const answer = input.value;
   const inputAnswer = answer.toLowerCase();
-  const pokeName = pokemonsData[numero]["name"];
+  const pokeName = pokemons[numero]["name"];
   
  if(answer === "" || answer === answer.toUpperCase()){
   alert('Debes ingresar una respuesta en minusculas')
