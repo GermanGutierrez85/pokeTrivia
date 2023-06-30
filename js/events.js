@@ -12,6 +12,20 @@ const image = document.getElementById('imgpokemon');
 
 const puntaje = document.getElementById('puntaje');
 
+const pokeJason = JSON.parse(jsonData);
+console.log(pokeJason)
+
+const pokemonsData = pokeJason.map( p => 
+                     new Pokemon(p.id, p.name));
+console.log(pokemonsData)
+/* let pokemonsData = [];
+for(const pokeInfo of pokeJason){
+    pokemonsData.push(new Pokemon(
+        pokeInfo.id,
+        pokeInfo.name,
+        )
+    );
+}; */
 
 
 
@@ -34,7 +48,7 @@ send.onclick = () =>{
 
   const answer = input.value;
   const inputAnswer = answer.toLowerCase();
-  const pokeName = pokemons[numero]["name"];
+  const pokeName = pokemonsData[numero]["name"];
   
  if(answer === "" || answer === answer.toUpperCase()){
   alert('Debes ingresar una respuesta en minusculas')
@@ -47,8 +61,15 @@ send.onclick = () =>{
  }else{
   resultText.innerHTML = `No!, It's ${pokeName}`;
  }
+ 
+ sessionStorage.setItem('acertados', cantidadAcertados);
+ sessionStorage.setItem('encuestados', cantidadEncuestados);
+ const encuestados = sessionStorage.getItem('encuestados');
+ const acertados = sessionStorage.getItem('acertados');
+ 
+ 
 
- puntaje.innerHTML = `Puntaje ${cantidadAcertados} de ${cantidadEncuestados}`;
+ puntaje.innerHTML = `Puntaje ${acertados} de ${encuestados}`;
 
  const score = ((cantidadAcertados / cantidadEncuestados) < 0.5 ? 
                  puntaje.classList.add('puntajeBajo'): 
@@ -56,4 +77,15 @@ send.onclick = () =>{
 
   
 }
+(function cargarPuntaje (){
+  const acertados = (sessionStorage.getItem('acertados') === null) ? 0 : sessionStorage.getItem('acertados')
+  const encuestados = (sessionStorage.getItem('encuestados') === null) ? 0 : sessionStorage.getItem('encuestados')
+  
+  const score = ((acertados / encuestados) < 0.5 ? 
+                 puntaje.classList.add('puntajeBajo'): 
+                 puntaje.classList.remove('puntajeBajo'));
+
+ puntaje.innerHTML = `Puntaje ${acertados} de ${encuestados}`
+  
+})();
 
