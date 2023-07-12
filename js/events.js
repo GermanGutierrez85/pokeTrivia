@@ -15,18 +15,8 @@ const puntaje = document.getElementById('puntaje');
 const poke = JSON.parse(jsonData);
 
 const pokemons = poke.map( p => 
-                     new Pokemon(p.id, p.name));
-
-/* let pokemonsData = [];
-for(const pokeInfo of pokeJason){
-    pokemonsData.push(new Pokemon(
-        pokeInfo.id,
-        pokeInfo.name,
-        )
-    );
-}; */
-
-
+                     new Pokemon(p.id, p.name)
+                     );
 
 function agregarEventos() {
   // evento de "click" sobre boton reload 
@@ -56,7 +46,8 @@ send.onclick = () =>{
  if (inputAnswer === pokeName.toLowerCase()){
   resultText.innerHTML = `Yes!, It's ${pokeName}`;
   image.classList.add('success');
-  cantidadAcertados++
+  cantidadAcertados++;
+  //buscarPokemon();
  }else{
   resultText.innerHTML = `No!, It's ${pokeName}`;
  }
