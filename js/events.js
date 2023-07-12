@@ -47,7 +47,7 @@ send.onclick = () =>{
   resultText.innerHTML = `Yes!, It's ${pokeName}`;
   image.classList.add('success');
   cantidadAcertados++;
-  //buscarPokemon();
+  buscarPokemon();
  }else{
   resultText.innerHTML = `No!, It's ${pokeName}`;
  }

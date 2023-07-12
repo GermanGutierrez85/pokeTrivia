@@ -9,10 +9,25 @@ const buscarPokemon = async () =>{
 
     if(resp.ok){
          const json = await resp.json();
-         console.log(json)
-            console.log(json.name)
+         console.log(json.name)
+         
+
             console.log(json.id)
-            console.log(json.types[0].type.name)
+            console.log("=====================")
+            const stats = json.stats
+            const types = json.types
+            types.forEach(element => {
+                console.log(element.type.name)
+            });
+            console.log("=====================")
+            let acumuladorStats ="";
+            stats.forEach(element => {
+                
+                let statName = element.stat.name;
+                let base_stat = element.base_stat;
+                acumuladorStats+=`<li>${statName} ${base_stat}</li>`
+                console.log(`${statName} ${base_stat}`)
+            });
             
         }
        
@@ -23,4 +38,4 @@ const buscarPokemon = async () =>{
     
  
 }
-buscarPokemon();
+
