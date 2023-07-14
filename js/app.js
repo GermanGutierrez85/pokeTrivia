@@ -24,7 +24,9 @@ function restart (){
     numero = Math.floor(Math.random() * (pokemons.length));
     let pokeImage= pokemons[numero]
     document.getElementById("imgpokemon").src = pokeImage.thumbnail;
-    
+    document.querySelector('#skills-description').setAttribute('style', 'display: none');
+    clearSkills();
+    input.value = "";
 }
 
 

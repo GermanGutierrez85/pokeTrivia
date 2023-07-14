@@ -1,4 +1,10 @@
 "use strict";
+//In this script, we have 
+// 1- the "onclick" event 
+//to load all the specifications of the Pokémon 
+//in case you guess correctly.
+// 2- "Load score" function
+// 3- "Clear all the skills" function
 
 const send = document.getElementById('send');
 
@@ -33,7 +39,7 @@ send.onclick = () =>{
     return input.value
     
   }
-  cantidadEncuestados++  
+  cantidadEncuestados++
 
   const answer = input.value;
   const inputAnswer = answer.toLowerCase();
@@ -46,36 +52,51 @@ send.onclick = () =>{
  if (inputAnswer === pokeName.toLowerCase()){
   resultText.innerHTML = `Yes!, It's ${pokeName}`;
   image.classList.add('success');
+  document.querySelector('#skills-description').attributeStyleMap.clear();
   cantidadAcertados++;
   buscarPokemon();
  }else{
   resultText.innerHTML = `No!, It's ${pokeName}`;
+   
  }
  
+ // Save score at sessionStorage
  sessionStorage.setItem('acertados', cantidadAcertados);
  sessionStorage.setItem('encuestados', cantidadEncuestados);
  const encuestados = sessionStorage.getItem('encuestados');
  const acertados = sessionStorage.getItem('acertados');
  
  
+ 
+ puntaje.textContent = `Puntaje ${acertados} de ${encuestados}`;
 
- puntaje.innerHTML = `Puntaje ${acertados} de ${encuestados}`;
-
- const score = ((cantidadAcertados / cantidadEncuestados) < 0.5 ? 
+ const score = ((acertados / encuestados) < 0.5 ? 
                  puntaje.classList.add('puntajeBajo'): 
                  puntaje.classList.remove('puntajeBajo'));
+ 
 
   
 }
+
+//Autocall function to load the score
 (function cargarPuntaje (){
-  const acertados = (sessionStorage.getItem('acertados') === null) ? 0 : sessionStorage.getItem('acertados')
-  const encuestados = (sessionStorage.getItem('encuestados') === null) ? 0 : sessionStorage.getItem('encuestados')
-  
+ 
+  const acertados = sessionStorage.getItem('acertados') === null ? 0 : sessionStorage.getItem('acertados')
+  const encuestados = sessionStorage.getItem('encuestados') === null ? 0 : sessionStorage.getItem('encuestados')
+
   const score = ((acertados / encuestados) < 0.5 ? 
                  puntaje.classList.add('puntajeBajo'): 
                  puntaje.classList.remove('puntajeBajo'));
 
- puntaje.innerHTML = `Puntaje ${acertados} de ${encuestados}`
-  
+ puntaje.textContent = `Puntaje ${acertados} de ${encuestados}`
+
+
 })();
 
+//Clear skillscard
+const clearSkills = () =>{
+  pokeName.innerHTML = "";
+  pokeId.innerHTML = "";
+  pokeTypes.innerHTML = "";
+  pokeStats.innerHTML = "";
+}
