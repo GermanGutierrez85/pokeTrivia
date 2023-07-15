@@ -67,7 +67,6 @@ send.onclick = () =>{
  const acertados = sessionStorage.getItem('acertados');
  
  
- 
  puntaje.textContent = `Puntaje ${acertados} de ${encuestados}`;
 
  const score = ((acertados / encuestados) < 0.5 ? 
@@ -89,7 +88,6 @@ send.onclick = () =>{
                  puntaje.classList.remove('puntajeBajo'));
 
  puntaje.textContent = `Puntaje ${acertados} de ${encuestados}`
-
 
 })();
 
