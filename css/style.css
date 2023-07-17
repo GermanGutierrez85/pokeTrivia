@@ -285,7 +285,7 @@ input {
   color: var(--bg-color-l-gray);
   text-align: center;
   letter-spacing: 1px;
-  text-shadow: none;
+  text-shadow: 2px 2px 0 var(--bg-color-l-blue), 2px -2px 0 var(--bg-color-l-blue), -2px 2px 0 var(--bg-color-l-blue), -2px -2px 0 var(--bg-color-l-blue), 2px 0px 0 var(--bg-color-l-blue), 0px 2px 0 var(--bg-color-l-blue), -2px 0px 0 var(--bg-color-l-blue), 0px -2px 0 var(--bg-color-l-blue);;
 }
 
 .poke-img {

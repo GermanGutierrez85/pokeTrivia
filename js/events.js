@@ -55,9 +55,10 @@ send.onclick = () =>{
   document.querySelector('#skills-description').attributeStyleMap.clear();
   cantidadAcertados++;
   buscarPokemon();
+  setTimeout(()=>{restart()}, 5000);
  }else{
   resultText.innerHTML = `No!, It's ${pokeName}`;
-   
+  setTimeout(()=>{restart()}, 2500);
  }
  
  // Save score at sessionStorage
@@ -73,21 +74,37 @@ send.onclick = () =>{
                  puntaje.classList.add('puntajeBajo'): 
                  puntaje.classList.remove('puntajeBajo'));
  
+  intentos(encuestados, acertados);
 
   
+             
 }
+const intentos = (tries, guessed) => {
+  if(tries == 5 || guessed == 3){
+    setTimeout(()=>{location.reload()}, 5000);
+    const result = cantidadAcertados > cantidadEncuestados/2 ? alert('GANASTE Maestro Pokemon!') :
+                  alert('PERDISTE, sigue entrenando');
+   return result
+   
+  }
+  
+}
+
 
 //Autocall function to load the score
 (function cargarPuntaje (){
  
-  const acertados = sessionStorage.getItem('acertados') === null ? 0 : sessionStorage.getItem('acertados')
+ /*  const acertados = sessionStorage.getItem('acertados') === null ? 0 : sessionStorage.getItem('acertados')
   const encuestados = sessionStorage.getItem('encuestados') === null ? 0 : sessionStorage.getItem('encuestados')
 
   const score = ((acertados / encuestados) < 0.5 ? 
                  puntaje.classList.add('puntajeBajo'): 
                  puntaje.classList.remove('puntajeBajo'));
 
- puntaje.textContent = `Puntaje ${acertados} de ${encuestados}`
+ puntaje.textContent = `Puntaje ${acertados} de ${encuestados}` */
+
+ alert('=== PokeTrivia === Prueba si eres un Maestro Pokemon; tienes solo 5 intentos. SUERTE!')
+
 
 })();
 
