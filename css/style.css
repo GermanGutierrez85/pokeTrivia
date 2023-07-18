@@ -269,7 +269,7 @@ input {
   justify-content: space-between;
   align-content: space-between;
   padding: 5px;
-  font-size: 18px;
+  font-size: 13px;
   text-transform:uppercase;
   color: var(--bg-color-l-gray);
   text-align: center;
@@ -285,7 +285,7 @@ input {
   color: var(--bg-color-l-gray);
   text-align: center;
   letter-spacing: 1px;
-  text-shadow: none;
+  text-shadow: 2px 2px 0 var(--bg-color-l-blue), 2px -2px 0 var(--bg-color-l-blue), -2px 2px 0 var(--bg-color-l-blue), -2px -2px 0 var(--bg-color-l-blue), 2px 0px 0 var(--bg-color-l-blue), 0px 2px 0 var(--bg-color-l-blue), -2px 0px 0 var(--bg-color-l-blue), 0px -2px 0 var(--bg-color-l-blue);;
 }
 
 .poke-img {
